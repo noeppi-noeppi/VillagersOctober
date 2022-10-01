@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[43,)"
+license="The Apache License, Version 2.0"
+issueTrackerURL="https://github.com/noeppi-noeppi/VillagersOctober/issues"
+
+[[mods]]
+modId="villagersoctober"
+version="${file.jarVersion}"
+displayName="Villager's October"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/villagers-october"
+updateJSONURL="https://assets.melanx.de/updates/villagers-october.json"
+authors="noeppi_noeppi"
+description="It's halloween in the minecraft village! Come and celebrate autumn with the villagers!"
+
+[[dependencies.villagersoctober]]
+    modId="forge"
+    mandatory=true
+    versionRange="[43.1,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.villagersoctober]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.2,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.villagersoctober]]
+    modId="libx"
+    mandatory=true
+    versionRange="[1.19.2-4.2.5,)"
+    ordering="NONE"
+    side="BOTH"
