@@ -1,10 +1,12 @@
 package io.github.noeppi_noeppi.mods.villagersoctober.data;
 
+import io.github.noeppi_noeppi.mods.villagersoctober.content.CandyItem;
 import io.github.noeppi_noeppi.mods.villagersoctober.scarecrow.ScarecrowBlock;
 import io.github.noeppi_noeppi.mods.villagersoctober.content.DoorBellBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.moddingx.libx.annotation.data.Datagen;
@@ -21,6 +23,15 @@ public class ItemModels extends ItemModelProviderBase {
     @Override
     protected void setup() {
         
+    }
+
+    @Override
+    protected void defaultItem(ResourceLocation id, Item item) {
+        if (item instanceof CandyItem) {
+            this.withExistingParent(id.getPath(), GENERATED).texture("layer0", this.mod.resource("item/candy"));
+        } else {
+            super.defaultItem(id, item);
+        }
     }
 
     @Override

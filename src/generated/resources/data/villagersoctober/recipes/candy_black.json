@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "tag": "forge:dyes/black"
+    },
+    "s": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "pattern": [
+    " s ",
+    "sds",
+    " s "
+  ],
+  "result": {
+    "item": "villagersoctober:candy_black"
+  }
+}

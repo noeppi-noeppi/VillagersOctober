@@ -1,8 +1,11 @@
 package io.github.noeppi_noeppi.mods.villagersoctober.data;
 
 import io.github.noeppi_noeppi.mods.villagersoctober.ModBlocks;
+import io.github.noeppi_noeppi.mods.villagersoctober.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import org.moddingx.libx.annotation.data.Datagen;
@@ -21,5 +24,9 @@ public class Recipes extends RecipeProviderBase implements CraftingExtension {
     protected void setup() {
         this.shapeless(ModBlocks.doorbell, Blocks.SMOOTH_STONE, ItemTags.WOODEN_BUTTONS);
         this.shaped(ModBlocks.scarecrow, " p ", "shs", " s ", 'p', Blocks.CARVED_PUMPKIN, 'h', Blocks.HAY_BLOCK, 's', Tags.Items.RODS_WOODEN);
+
+        for (DyeColor color : DyeColor.values()) {
+            this.shaped(ModItems.candy.get(color), " s ", "sds", " s ", 's', Items.SUGAR, 'd', color.getTag());
+        }
     }
 }
