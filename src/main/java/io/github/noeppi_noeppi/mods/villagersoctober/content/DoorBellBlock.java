@@ -1,4 +1,4 @@
-package io.github.noeppi_noeppi.mods.villagersoctober.village;
+package io.github.noeppi_noeppi.mods.villagersoctober.content;
 
 import io.github.noeppi_noeppi.mods.villagersoctober.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -32,19 +32,19 @@ import org.moddingx.libx.mod.ModX;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class DoorBell extends BlockBase {
+public class DoorBellBlock extends BlockBase {
 
-    private static final RotationShape SHAPE = new RotationShape(Shapes.or(
+    public static final RotationShape SHAPE = new RotationShape(Shapes.or(
             box(6, 5, 0, 10, 11, 1),
             box(7, 7, 1, 9, 9, 2)
     ));
 
-    private static final RotationShape SHAPE_PRESSED = new RotationShape(Shapes.or(
+    public static final RotationShape SHAPE_PRESSED = new RotationShape(Shapes.or(
             box(6, 5, 0, 10, 11, 1),
             box(7, 7, 0.25, 9, 9, 1.25)
     ));
 
-    public DoorBell(ModX mod, Properties properties) {
+    public DoorBellBlock(ModX mod, Properties properties) {
         super(mod, properties, new Item.Properties().stacksTo(16));
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(BlockStateProperties.POWERED, false)

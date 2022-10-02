@@ -29,6 +29,7 @@ public class BlockStates extends BlockStateProviderBase {
         this.manualState(ModBlocks.doorbell);
 
         this.makeDoorbell(ModBlocks.doorbell);
+        this.makeScarecrow(ModBlocks.scarecrow, ModBlocks.scarecrowTop);
     }
     
     @SuppressWarnings("SameParameterValue")
@@ -48,5 +49,23 @@ public class BlockStates extends BlockStateProviderBase {
                     .with(BlockStateProperties.POWERED, true)
                     .addModels(new ConfiguredModel(pressed, 0, (int) direction.getOpposite().toYRot(), false));
         }
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private void makeScarecrow(Block block, Block topBlock) {
+        for (int i = 0; i <= 5; i++) {
+            ResourceLocation tex;
+            if (i == 0) {
+                tex = new ResourceLocation("minecraft", "block/carved_pumpkin");
+            } else {
+                tex = this.mod.resource("block/scarecrow_face_" + i);
+            }
+            ModelFile model = this.models().withExistingParent("scarecrow_" + i, this.mod.resource("block/scarecrow"))
+                    .texture("face", tex);
+            if (i == 0) this.manualModel(block, model);
+        }
+        
+        ResourceLocation topId = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(topBlock));
+        this.manualModel(topBlock, this.models().getBuilder(topId.getPath()).texture("particle", new ResourceLocation("minecraft", "block/hay_block_side")));
     }
 }

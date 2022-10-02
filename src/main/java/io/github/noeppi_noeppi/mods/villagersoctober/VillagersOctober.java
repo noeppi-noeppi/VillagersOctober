@@ -2,7 +2,6 @@ package io.github.noeppi_noeppi.mods.villagersoctober;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -22,7 +21,7 @@ public final class VillagersOctober extends ModXRegistration {
             @Nonnull
             @Override
             public ItemStack makeIcon() {
-                return new ItemStack(Items.BARRIER);
+                return new ItemStack(ModBlocks.scarecrow);
             }
         });
         

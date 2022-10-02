@@ -1,0 +1,6 @@
+{
+  "parent": "villagersoctober:block/scarecrow",
+  "textures": {
+    "face": "minecraft:block/carved_pumpkin"
+  }
+}

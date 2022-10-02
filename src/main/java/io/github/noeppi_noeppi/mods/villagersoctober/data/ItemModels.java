@@ -1,9 +1,11 @@
 package io.github.noeppi_noeppi.mods.villagersoctober.data;
 
-import io.github.noeppi_noeppi.mods.villagersoctober.village.DoorBell;
+import io.github.noeppi_noeppi.mods.villagersoctober.scarecrow.ScarecrowBlock;
+import io.github.noeppi_noeppi.mods.villagersoctober.content.DoorBellBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.moddingx.libx.annotation.data.Datagen;
 import org.moddingx.libx.datagen.provider.ItemModelProviderBase;
@@ -23,8 +25,10 @@ public class ItemModels extends ItemModelProviderBase {
 
     @Override
     protected void defaultBlock(ResourceLocation id, BlockItem item) {
-        if (item.getBlock() instanceof DoorBell) {
+        if (item.getBlock() instanceof DoorBellBlock) {
             this.withExistingParent(id.getPath(), GENERATED).texture("layer0", new ResourceLocation(id.getNamespace(), "item/" + id.getPath()));
+        } else if (item.getBlock() instanceof ScarecrowBlock) {
+            this.getBuilder(id.getPath()).parent(new ModelFile.UncheckedModelFile(new ResourceLocation(id.getNamespace(), "block/" + id.getPath() + "_0")));
         } else {
             super.defaultBlock(id, item);
         }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "h": {
+      "item": "minecraft:hay_block"
+    },
+    "p": {
+      "item": "minecraft:carved_pumpkin"
+    },
+    "s": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    " p ",
+    "shs",
+    " s "
+  ],
+  "result": {
+    "item": "villagersoctober:scarecrow"
+  }
+}

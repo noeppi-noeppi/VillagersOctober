@@ -1,0 +1,6 @@
+{
+  "parent": "villagersoctober:block/scarecrow",
+  "textures": {
+    "face": "villagersoctober:block/scarecrow_face_4"
+  }
+}
