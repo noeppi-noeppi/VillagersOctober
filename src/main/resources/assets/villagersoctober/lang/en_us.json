@@ -1,10 +1,13 @@
 {
   "itemGroup.villagersoctober": "Villager's October",
   
-  "item.villagersoctober.candy":  "Candy",
+  "item.villagersoctober.candy": "Candy",
+  "item.villagersoctober.ghast_balloon": "Ghast Balloon",
   
-  "block.villagersoctober.doorbell":  "Doorbell",
-  "block.villagersoctober.scarecrow":  "Scarecrow",
+  "block.villagersoctober.doorbell": "Doorbell",
+  "block.villagersoctober.scarecrow": "Scarecrow",
+  
+  "entity.villagersoctober.ghast_balloon": "Ghast Balloon",
   
   "subtitle.villagersoctober.doorbell": "Doorbell"
 }
