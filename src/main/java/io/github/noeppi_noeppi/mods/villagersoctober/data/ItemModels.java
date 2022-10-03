@@ -1,6 +1,7 @@
 package io.github.noeppi_noeppi.mods.villagersoctober.data;
 
 import io.github.noeppi_noeppi.mods.villagersoctober.content.CandyItem;
+import io.github.noeppi_noeppi.mods.villagersoctober.dress.DressItem;
 import io.github.noeppi_noeppi.mods.villagersoctober.scarecrow.ScarecrowBlock;
 import io.github.noeppi_noeppi.mods.villagersoctober.content.DoorBellBlock;
 import net.minecraft.data.DataGenerator;
@@ -27,7 +28,9 @@ public class ItemModels extends ItemModelProviderBase {
 
     @Override
     protected void defaultItem(ResourceLocation id, Item item) {
-        if (item instanceof CandyItem) {
+        if (item instanceof DressItem dress && dress.usesBlockModel()) {
+            this.withExistingParent(id.getPath(), this.mod.resource("dress/" + id.getPath()));
+        } else if (item instanceof CandyItem) {
             this.withExistingParent(id.getPath(), GENERATED).texture("layer0", this.mod.resource("item/candy"));
         } else {
             super.defaultItem(id, item);

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "p": {
+      "type": "libx:effect",
+      "effects": [
+        {
+          "amplifier": 0,
+          "duration": 20,
+          "potion": "minecraft:strength"
+        }
+      ],
+      "extraEffects": true,
+      "higherAmplifier": true,
+      "higherDuration": true,
+      "item": "minecraft:potion"
+    },
+    "w": {
+      "item": "minecraft:purple_wool"
+    }
+  },
+  "pattern": [
+    "w w",
+    "wpw",
+    "www"
+  ],
+  "result": {
+    "item": "villagersoctober:witch_robe"
+  }
+}
