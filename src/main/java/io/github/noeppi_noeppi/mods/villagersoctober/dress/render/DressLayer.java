@@ -25,6 +25,19 @@ public class DressLayer<M extends HumanoidModel<Player>> extends RenderLayer<Pla
             EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET,
             EquipmentSlot.MAINHAND
     };
+
+    private final DressRenderProperties.RenderContext context = new DressRenderProperties.RenderContext() {
+
+        @Override
+        public void translateBy(PoseStack poseStack, EquipmentSlot slot, boolean left) {
+            DressLayer.this.translateBy(poseStack, slot, left);
+        }
+
+        @Override
+        public void translateTo(PoseStack poseStack, EquipmentSlot slot, boolean left) {
+            DressLayer.this.translateTo(poseStack, slot, left);
+        }
+    };
     
     public DressLayer(RenderLayerParent<Player, M> renderer) {
         super(renderer);
@@ -32,13 +45,13 @@ public class DressLayer<M extends HumanoidModel<Player>> extends RenderLayer<Pla
 
     @Override
     public void render(@Nonnull PoseStack poseStack, @Nonnull MultiBufferSource buffer, int light, @Nonnull Player entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-        renderItem(poseStack, buffer, entity, light, EquipmentSlot.HEAD);
-        renderItem(poseStack, buffer, entity, light, EquipmentSlot.CHEST);
-        renderItem(poseStack, buffer, entity, light, EquipmentSlot.LEGS);
-        renderItem(poseStack, buffer, entity, light, EquipmentSlot.FEET);
+        renderItem(poseStack, buffer, entity, light, EquipmentSlot.HEAD, partialTick);
+        renderItem(poseStack, buffer, entity, light, EquipmentSlot.CHEST, partialTick);
+        renderItem(poseStack, buffer, entity, light, EquipmentSlot.LEGS, partialTick);
+        renderItem(poseStack, buffer, entity, light, EquipmentSlot.FEET, partialTick);
     }
     
-    private void renderItem(PoseStack poseStack, MultiBufferSource buffer, Player entity, int light, EquipmentSlot slot) {
+    private void renderItem(PoseStack poseStack, MultiBufferSource buffer, Player entity, int light, EquipmentSlot slot, float partialTicks) {
         ItemStack stack = entity.getItemBySlot(slot);
         if (!stack.isEmpty() && stack.getItem() instanceof DressItem dress && slot == dress.slot) {
             DressRenderProperties properties = dress.getRenderProperties();
@@ -51,6 +64,7 @@ public class DressLayer<M extends HumanoidModel<Player>> extends RenderLayer<Pla
                     }
                 }
             }
+            properties.renderCustom(this.context, poseStack, buffer, entity, stack, light, partialTicks);
         }
     }
     
@@ -64,7 +78,7 @@ public class DressLayer<M extends HumanoidModel<Player>> extends RenderLayer<Pla
         poseStack.popPose();
     }
     
-    private void translateTo(PoseStack poseStack, EquipmentSlot slot, boolean left) {
+    private void translateBy(PoseStack poseStack, EquipmentSlot slot, boolean left) {
         switch (slot) {
             case HEAD -> this.getParentModel().head.translateAndRotate(poseStack);
             case CHEST -> this.getParentModel().body.translateAndRotate(poseStack);
@@ -87,6 +101,10 @@ public class DressLayer<M extends HumanoidModel<Player>> extends RenderLayer<Pla
                 }
             }
         }
+    }
+
+    private void translateTo(PoseStack poseStack, EquipmentSlot slot, boolean left) {
+        this.translateBy(poseStack, slot, left);
         poseStack.translate(0, -0.25, 0);
         poseStack.mulPose(Vector3f.YP.rotationDegrees(180));
         poseStack.scale(0.625f, -0.625f, -0.625f);

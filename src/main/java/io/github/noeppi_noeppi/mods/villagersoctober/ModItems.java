@@ -2,6 +2,8 @@ package io.github.noeppi_noeppi.mods.villagersoctober;
 
 import io.github.noeppi_noeppi.mods.villagersoctober.bloon.GhastBalloonItem;
 import io.github.noeppi_noeppi.mods.villagersoctober.content.CandyItem;
+import io.github.noeppi_noeppi.mods.villagersoctober.dress.BatMask;
+import io.github.noeppi_noeppi.mods.villagersoctober.dress.BatWings;
 import io.github.noeppi_noeppi.mods.villagersoctober.dress.WitchHat;
 import io.github.noeppi_noeppi.mods.villagersoctober.dress.WitchRobe;
 import io.github.noeppi_noeppi.mods.villagersoctober.util.Colored;
@@ -16,4 +18,6 @@ public class ModItems {
     public static final GhastBalloonItem ghastBalloon = new GhastBalloonItem(VillagersOctober.getInstance(), new Item.Properties().stacksTo(1));
     public static final WitchHat witchHat = new WitchHat(VillagersOctober.getInstance(), new Item.Properties().stacksTo(1));
     public static final WitchRobe witchRobe = new WitchRobe(VillagersOctober.getInstance(), new Item.Properties().stacksTo(1));
+    public static final BatMask batMask = new BatMask(VillagersOctober.getInstance(), new Item.Properties().stacksTo(1));
+    public static final BatWings batWings = new BatWings(VillagersOctober.getInstance(), new Item.Properties().stacksTo(1));
 }

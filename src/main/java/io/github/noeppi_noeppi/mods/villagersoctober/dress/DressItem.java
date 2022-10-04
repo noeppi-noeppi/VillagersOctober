@@ -43,7 +43,7 @@ public class DressItem extends ItemBase {
 
     @Override
     public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) {
-        return armorType == this.slot;
+        return armorType == this.slot && entity instanceof Player;
     }
     
     @Nonnull
