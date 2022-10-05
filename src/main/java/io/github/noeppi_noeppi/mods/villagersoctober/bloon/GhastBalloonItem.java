@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 
 public class GhastBalloonItem extends ItemBase implements Registerable {
 
-    private final EntityType<GhastBalloon> entityType;
+    public final EntityType<GhastBalloon> entityType;
     
     public GhastBalloonItem(ModX mod, Properties properties) {
         super(mod, properties);
