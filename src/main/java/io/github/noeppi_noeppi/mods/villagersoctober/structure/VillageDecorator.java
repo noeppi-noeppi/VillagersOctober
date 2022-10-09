@@ -30,7 +30,7 @@ public class VillageDecorator {
         settings.clearProcessors();
         settings.setRandom(null);
         StructureTemplate.Palette palette = settings.getRandomPalette(template.palettes, at);
-        Random random = new Random(Mth.getSeed(at) ^ 0xABC12345);
+        Random random = new Random(Mth.getSeed(at) ^ ((((long) "Villager".hashCode()) << 32) | "October".hashCode()));
         
         boolean hasScarecrow = false;
         

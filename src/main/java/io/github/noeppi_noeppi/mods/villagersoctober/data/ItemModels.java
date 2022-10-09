@@ -3,7 +3,7 @@ package io.github.noeppi_noeppi.mods.villagersoctober.data;
 import io.github.noeppi_noeppi.mods.villagersoctober.content.CandyItem;
 import io.github.noeppi_noeppi.mods.villagersoctober.dress.DressItem;
 import io.github.noeppi_noeppi.mods.villagersoctober.scarecrow.ScarecrowBlock;
-import io.github.noeppi_noeppi.mods.villagersoctober.content.DoorBellBlock;
+import io.github.noeppi_noeppi.mods.villagersoctober.bell.DoorBellBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;

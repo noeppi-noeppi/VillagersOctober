@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var coremods_1 = require("coremods");
 function initializeCoreMod() {
     return {
-        structure_track: {
+        structure_place: {
             target: {
                 type: 'METHOD',
                 class: 'net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement',

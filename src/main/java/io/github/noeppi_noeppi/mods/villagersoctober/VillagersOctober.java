@@ -1,5 +1,7 @@
 package io.github.noeppi_noeppi.mods.villagersoctober;
 
+import io.github.noeppi_noeppi.mods.villagersoctober.bell.BellHelper;
+import io.github.noeppi_noeppi.mods.villagersoctober.dress.DressHelper;
 import io.github.noeppi_noeppi.mods.villagersoctober.dress.render.DressLayer;
 import io.github.noeppi_noeppi.mods.villagersoctober.util.RenderLayerHelper;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -11,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -43,6 +46,8 @@ public final class VillagersOctober extends ModXRegistration {
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(this::reloadClientResources);
         });
+
+        MinecraftForge.EVENT_BUS.addListener(BellHelper::tickEntity);
     }
 
     @Nonnull
@@ -57,7 +62,10 @@ public final class VillagersOctober extends ModXRegistration {
 
     @Override
     protected void setup(FMLCommonSetupEvent event) {
-
+        event.enqueueWork(() -> {
+            DressHelper.addDress(ModItems.witchHat, ModItems.witchRobe);
+            DressHelper.addDress(ModItems.batMask, ModItems.batWings);
+        });
     }
 
     @Override

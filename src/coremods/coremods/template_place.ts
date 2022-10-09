@@ -2,7 +2,7 @@ import { AbstractInsnNode, ASMAPI, CoreMods, InsnList, MethodInsnNode, MethodNod
 
 function initializeCoreMod(): CoreMods {
     return {
-        structure_track: {
+        structure_place: {
             target: {
                 type: 'METHOD',
                 class: 'net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement',

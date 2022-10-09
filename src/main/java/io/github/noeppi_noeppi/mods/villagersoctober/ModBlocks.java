@@ -1,7 +1,7 @@
 package io.github.noeppi_noeppi.mods.villagersoctober;
 
 import io.github.noeppi_noeppi.mods.villagersoctober.scarecrow.ScarecrowBlockTop;
-import io.github.noeppi_noeppi.mods.villagersoctober.content.DoorBellBlock;
+import io.github.noeppi_noeppi.mods.villagersoctober.bell.DoorBellBlock;
 import io.github.noeppi_noeppi.mods.villagersoctober.scarecrow.ScarecrowBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;

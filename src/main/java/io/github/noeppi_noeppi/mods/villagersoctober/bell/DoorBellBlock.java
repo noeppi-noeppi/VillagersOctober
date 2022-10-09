@@ -1,4 +1,4 @@
-package io.github.noeppi_noeppi.mods.villagersoctober.content;
+package io.github.noeppi_noeppi.mods.villagersoctober.bell;
 
 import io.github.noeppi_noeppi.mods.villagersoctober.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -98,6 +98,7 @@ public class DoorBellBlock extends BlockBase {
             level.scheduleTick(pos, this, 30);
             level.playSound(null, pos, ModSounds.doorbell, SoundSource.BLOCKS, 0.3f, 0.5f);
             level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
+            BellHelper.wakeUpVillager(level, pos, player);
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
     }
