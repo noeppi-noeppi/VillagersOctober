@@ -1,0 +1,29 @@
+{
+  "parent": "villagersoctober:villagersoctober/root",
+  "criteria": {
+    "halloween": {
+      "conditions": {},
+      "trigger": "villagersoctober:halloween"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.villagersoctober.villagersoctober.halloween.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "villagersoctober:candy_red"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.villagersoctober.villagersoctober.halloween.title"
+    }
+  },
+  "requirements": [
+    [
+      "halloween"
+    ]
+  ]
+}

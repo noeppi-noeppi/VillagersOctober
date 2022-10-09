@@ -1,5 +1,6 @@
 package io.github.noeppi_noeppi.mods.villagersoctober;
 
+import io.github.noeppi_noeppi.mods.villagersoctober.advancement.ModTriggers;
 import io.github.noeppi_noeppi.mods.villagersoctober.bell.BellHelper;
 import io.github.noeppi_noeppi.mods.villagersoctober.dress.DressHelper;
 import io.github.noeppi_noeppi.mods.villagersoctober.dress.render.DressLayer;
@@ -63,6 +64,8 @@ public final class VillagersOctober extends ModXRegistration {
     @Override
     protected void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            ModTriggers.setup();
+            
             DressHelper.addDress(ModItems.witchHat, ModItems.witchRobe);
             DressHelper.addDress(ModItems.batMask, ModItems.batWings);
         });

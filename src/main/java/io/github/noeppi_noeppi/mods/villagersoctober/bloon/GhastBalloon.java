@@ -90,6 +90,9 @@ public class GhastBalloon extends Entity {
         } else {
             this.markHurt();
             if (amount > 0) {
+                if (source.getEntity() instanceof LivingEntity living) {
+                    living.awardKillScore(this, 0, source);
+                }
                 this.die();
             }
             return true;

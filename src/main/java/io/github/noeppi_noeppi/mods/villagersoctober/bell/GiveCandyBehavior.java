@@ -1,9 +1,11 @@
 package io.github.noeppi_noeppi.mods.villagersoctober.bell;
 
 import io.github.noeppi_noeppi.mods.villagersoctober.ModItems;
+import io.github.noeppi_noeppi.mods.villagersoctober.advancement.ModTriggers;
 import io.github.noeppi_noeppi.mods.villagersoctober.villager.ModMemories;
 import io.github.noeppi_noeppi.mods.villagersoctober.villager.VillagerBrainHelper;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
@@ -83,6 +85,9 @@ public class GiveCandyBehavior extends Behavior<Villager> {
             if (this.candyTimer == 40) {
                 BehaviorUtils.throwItem(owner, this.candyStack.copy(), this.player.position());
                 BellHelper.setCandyTimer(owner);
+                if (this.player instanceof ServerPlayer serverPlayer) {
+                    ModTriggers.HALLOWEEN.trigger(serverPlayer, owner);
+                }
                 owner.getBrain().eraseMemory(ModMemories.candyTarget);
                 owner.getBrain().setActiveActivityIfPossible(Activity.REST);
             }
