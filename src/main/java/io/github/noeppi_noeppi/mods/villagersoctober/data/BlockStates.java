@@ -27,6 +27,7 @@ public class BlockStates extends BlockStateProviderBase {
     @Override
     protected void setup() {
         this.manualState(ModBlocks.doorbell);
+        this.manualModel(ModBlocks.mysticalTable);
 
         this.makeDoorbell(ModBlocks.doorbell);
         this.makeScarecrow(ModBlocks.scarecrow, ModBlocks.scarecrowTop);

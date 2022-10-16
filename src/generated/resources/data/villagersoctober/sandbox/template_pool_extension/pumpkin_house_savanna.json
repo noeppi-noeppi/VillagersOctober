@@ -1,0 +1,15 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "villagersoctober:pumpkin_house_savanna",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      },
+      "weight": 20
+    }
+  ],
+  "pool": "minecraft:village/savanna/houses",
+  "required": false
+}

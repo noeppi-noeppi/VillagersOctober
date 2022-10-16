@@ -10,8 +10,10 @@
   
   "block.villagersoctober.doorbell": "Doorbell",
   "block.villagersoctober.scarecrow": "Scarecrow",
+  "block.villagersoctober.mystical_table": "Mystical Table",
   
   "entity.villagersoctober.ghast_balloon": "Ghast Balloon",
+  "entity.minecraft.villager.villagersoctober.madman": "Madman",
   
   "advancements.villagersoctober.villagersoctober.root.title":  "Villager's October",
   "advancements.villagersoctober.villagersoctober.root.description":  "Discover a decorated village!",

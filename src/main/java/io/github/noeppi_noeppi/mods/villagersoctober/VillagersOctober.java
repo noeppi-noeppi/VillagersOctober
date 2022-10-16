@@ -5,9 +5,12 @@ import io.github.noeppi_noeppi.mods.villagersoctober.bell.BellHelper;
 import io.github.noeppi_noeppi.mods.villagersoctober.dress.DressHelper;
 import io.github.noeppi_noeppi.mods.villagersoctober.dress.render.DressLayer;
 import io.github.noeppi_noeppi.mods.villagersoctober.util.RenderLayerHelper;
+import io.github.noeppi_noeppi.mods.villagersoctober.villager.profession.MadManTrades;
+import io.github.noeppi_noeppi.mods.villagersoctober.villager.profession.ModProfessions;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
@@ -68,6 +71,8 @@ public final class VillagersOctober extends ModXRegistration {
             
             DressHelper.addDress(ModItems.witchHat, ModItems.witchRobe);
             DressHelper.addDress(ModItems.batMask, ModItems.batWings);
+
+            VillagerTrades.TRADES.put(ModProfessions.madman, MadManTrades.makeTrades());
         });
     }
 

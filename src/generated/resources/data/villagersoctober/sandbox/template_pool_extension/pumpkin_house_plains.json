@@ -1,0 +1,15 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "villagersoctober:pumpkin_house_plains",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      },
+      "weight": 20
+    }
+  ],
+  "pool": "minecraft:village/plains/houses",
+  "required": false
+}
