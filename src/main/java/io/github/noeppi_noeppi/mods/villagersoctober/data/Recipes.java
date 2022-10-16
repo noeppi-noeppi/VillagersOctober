@@ -29,7 +29,8 @@ public class Recipes extends RecipeProviderBase implements CraftingExtension {
     protected void setup() {
         this.shapeless(ModBlocks.doorbell, Blocks.SMOOTH_STONE, ItemTags.WOODEN_BUTTONS);
         this.shaped(ModBlocks.scarecrow, " p ", "shs", " s ", 'p', Blocks.CARVED_PUMPKIN, 'h', Blocks.HAY_BLOCK, 's', Tags.Items.RODS_WOODEN);
-
+        this.shaped(ModBlocks.mysticalTable, "ccc", "p p", "p p", 'c', Blocks.GREEN_TERRACOTTA, 'p', ItemTags.PLANKS);
+        
         for (DyeColor color : DyeColor.values()) {
             this.shaped(ModItems.candy.get(color), " s ", "sds", " s ", 's', Items.SUGAR, 'd', color.getTag());
         }

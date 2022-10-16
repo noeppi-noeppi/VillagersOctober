@@ -22,5 +22,9 @@
   "advancements.villagersoctober.villagersoctober.halloween.title":  "Happy Halloween!",
   "advancements.villagersoctober.villagersoctober.halloween.description":  "Put on a halloween dress and get some candy from a vilager.",
   
-  "subtitle.villagersoctober.doorbell": "Doorbell"
+  "subtitle.villagersoctober.doorbell": "Doorbell",
+  
+  "jei.villagersoctober.candy": "Put on a halloween costume and ring the bell at the villager's houses at night to get some candy.",
+  "jei.villagersoctober.mystical_table": "Job-site block of the madman villager. Can hold up to 5 brewing-related items.",
+  "jei.villagersoctober.ghast_balloon": "A tiny floating ghast that can be attached to a fence. Can be found in villages or traded from a madman villager."
 }
