@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "item": "minecraft:green_terracotta"
+    },
+    "p": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "ccc",
+    "p p",
+    "p p"
+  ],
+  "result": {
+    "item": "villagersoctober:mystical_table"
+  }
+}

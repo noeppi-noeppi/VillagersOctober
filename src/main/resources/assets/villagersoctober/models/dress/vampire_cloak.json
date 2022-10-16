@@ -1,0 +1,12 @@
+{
+  "parent": "block/block",
+  "loader": "forge:obj",
+  "model": "villagersoctober:obj/vampire_cloak.obj",
+  "flip_v": true,
+  "display": {
+    "head": {
+      "translation": [13.75, -34.25, 13.75],
+      "scale": [1.7, 1.7, 1.7]
+    }
+  }
+}
