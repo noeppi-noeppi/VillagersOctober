@@ -3,6 +3,7 @@ package io.github.noeppi_noeppi.mods.villagersoctober.structure;
 import io.github.noeppi_noeppi.mods.villagersoctober.ModBlocks;
 import io.github.noeppi_noeppi.mods.villagersoctober.ModItems;
 import io.github.noeppi_noeppi.mods.villagersoctober.bloon.GhastBalloon;
+import io.github.noeppi_noeppi.mods.villagersoctober.garland.Garland;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -17,9 +18,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import org.moddingx.libx.util.lazy.LazyValue;
 
 import java.util.Random;
 
@@ -33,6 +36,14 @@ public class VillageDecorator {
         Random random = new Random(Mth.getSeed(at) ^ ((((long) "Villager".hashCode()) << 32) | "October".hashCode()));
         
         boolean hasScarecrow = false;
+        LazyValue<BlockPos> templateCenter = new LazyValue<>(() -> {
+            BoundingBox box = template.getBoundingBox(settings, at);
+            return new BlockPos(
+                    Math.round((box.maxX() - box.minX()) / 2f),
+                    Math.round((box.maxY() - box.minY()) / 2f),
+                    Math.round((box.maxZ() - box.minZ()) / 2f)
+            );
+        });
         
         for (StructureTemplate.StructureBlockInfo block : TemplateHelper.processBlockInfos(level, at, at2, settings, palette.blocks(), template)) {
             if (!hasScarecrow && block.state.is(BlockTags.CROPS) && random.nextInt(15) == 0) {
@@ -79,6 +90,20 @@ public class VillageDecorator {
                     }
                 }
             }
+            
+            // Only the upper parts of buildings get garland
+            if (block.pos.getY() - at.getY() >= 4 && random.nextInt(30) == 0) {
+                int maxDown = Math.min(2, block.pos.getY() - at.getY() - 4);
+                int xd = block.pos.getX() - templateCenter.get().getX();
+                int zd = block.pos.getZ() - templateCenter.get().getZ();
+                Direction.Axis firstAxis = Math.abs(xd) > Math.abs(zd) ? Direction.Axis.X : Direction.Axis.Z;
+                Direction.Axis secondAxis = firstAxis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
+                Direction first = Direction.fromAxisAndDirection(firstAxis, (firstAxis == Direction.Axis.X ? xd : zd) > 0 ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE);
+                Direction second = Direction.fromAxisAndDirection(secondAxis, (secondAxis == Direction.Axis.X ? xd : zd) > 0 ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE);
+                if (!tryPlaceGarland(level, block.pos.relative(first), first.getOpposite(), maxDown)) {
+                    tryPlaceGarland(level, block.pos.relative(second), second.getOpposite(), maxDown);
+                }
+            }
         }
     }
     
@@ -89,8 +114,23 @@ public class VillageDecorator {
         if (!level.getBlockState(pos.relative(facing)).isFaceSturdy(level, pos, facing.getOpposite())) return false;
         if (level.getBlockState(pos.relative(facing)).is(BlockTags.DOORS)) return false;
         BlockState state = ModBlocks.doorbell.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, facing);
-        level.setBlock(pos, state, 3);
-        return true;
+        return level.setBlock(pos, state, 3);
+    }
+    
+    private static boolean tryPlaceGarland(WorldGenLevel level, BlockPos pos, Direction facing, int maxDown) {
+        BlockState currentState = level.getBlockState(pos);
+        if (!currentState.isAir() && currentState.getBlock() != Blocks.TORCH && !currentState.is(BlockTags.SMALL_FLOWERS)) return false;
+        if (!level.getBlockState(pos.relative(facing)).isFaceSturdy(level, pos, facing.getOpposite())) return false;
+        if (level.getBlockState(pos.relative(facing)).is(BlockTags.DOORS)) return false;
+        BlockState state = ModBlocks.garland.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, facing);
+        if (!level.setBlock(pos, state, 3)) return false;
+        if (level.getBlockEntity(pos) instanceof Garland garland) {
+            garland.setGenerateOnLoad(maxDown);
+            return true;
+        } else {
+            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+            return false;
+        }
     }
     
     private static void trySpawnEntity(WorldGenLevel level, Entity entity) {

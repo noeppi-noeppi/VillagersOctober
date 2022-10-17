@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -27,12 +28,14 @@ public class Garland extends BlockEntityBase {
     private BlockPos otherPos;
     private AABB renderAABB;
     private boolean generating;
+    private int maxDownGenerating;
     
     public Garland(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.primary = false;
         this.otherPos = BlockPos.ZERO;
         this.generating = false;
+        this.maxDownGenerating = 2;
         this.updateRenderAABB();
     }
     
@@ -60,11 +63,12 @@ public class Garland extends BlockEntityBase {
         this.setDispatchable();
     }
     
-    public void setGenerateOnLoad() {
+    public void setGenerateOnLoad(int maxDown) {
         this.primary = false;
         this.otherPos = BlockPos.ZERO;
         this.updateRenderAABB();
         this.generating = true;
+        this.maxDownGenerating = Math.min(maxDown, 2);
         this.setChanged();
     }
 
@@ -77,16 +81,16 @@ public class Garland extends BlockEntityBase {
                 Map<BlockPos, BlockState> possiblePositions = new HashMap<>();
                 int minX = this.worldPosition.getX() - 14;
                 int maxX = this.worldPosition.getX() + 14;
-                int minY = this.worldPosition.getY() - 2;
-                int maxY = this.worldPosition.getY() + 2;
+                int minY = this.worldPosition.getY() - Math.min(2, this.maxDownGenerating);
+                int maxY = this.worldPosition.getY() + 3;
                 int minZ = this.worldPosition.getZ() - 14;
                 int maxZ = this.worldPosition.getZ() + 14;
                 Direction currentDir = this.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
                 switch (currentDir) {
-                    case NORTH -> minZ = this.worldPosition.getZ() + 4;
-                    case SOUTH -> maxZ = this.worldPosition.getZ() - 4;
-                    case WEST -> minX = this.worldPosition.getX() + 4;
-                    case EAST -> maxX = this.worldPosition.getX() - 4;
+                    case NORTH -> minZ = this.worldPosition.getZ() + 5;
+                    case SOUTH -> maxZ = this.worldPosition.getZ() - 5;
+                    case WEST -> minX = this.worldPosition.getX() + 5;
+                    case EAST -> maxX = this.worldPosition.getX() - 5;
                 }
                 BlockPos.MutableBlockPos mpos = new BlockPos.MutableBlockPos();
                 for (int x = minX; x <= maxX; x++) {
@@ -106,9 +110,33 @@ public class Garland extends BlockEntityBase {
                         }
                     }
                 }
+                Random random = new Random(Mth.getSeed(this.worldPosition) + 42);
+                if (possiblePositions.isEmpty()) {
+                    int targetHeight = this.worldPosition.getY() + 1 + random.nextInt(2);
+                    for (int i = 0; i < 5; i++) {
+                        int x = minX + random.nextInt(maxX - minX + 1);
+                        int z = minZ + random.nextInt(maxZ - minZ + 1);
+                        BlockPos target = new BlockPos.MutableBlockPos(x, targetHeight, z);
+                        if (!BlockClipHelper.isFreeSpace(this.level, this.worldPosition, target)) continue;
+                        if (!level.isEmptyBlock(target) || !level.isEmptyBlock(target.below(1)) || !level.isEmptyBlock(target.below(2))) {
+                            continue;
+                        }
+                        level.setBlock(target, Blocks.OAK_PLANKS.defaultBlockState(), 3);
+                        if (random.nextInt(3) == 0) {
+                            level.setBlock(target.above(), Blocks.JACK_O_LANTERN.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.from2DDataValue(random.nextInt(4))), 3);
+                        }
+                        BlockPos.MutableBlockPos mt = target.mutable().move(0, -1, 0);
+                        while (level.isEmptyBlock(mt) || level.getBlockState(mt).getMaterial().isReplaceable()) {
+                            if (!level.setBlock(mt, Blocks.OAK_FENCE.defaultBlockState(), 3)) break;
+                            mt.move(0, -1, 0);
+                        }
+                        possiblePositions.put(target.relative(currentDir), ModBlocks.garland.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, currentDir.getOpposite()));
+                        break;
+                    }
+                }
                 if (!possiblePositions.isEmpty()) {
                     List<BlockPos> positions = possiblePositions.keySet().stream().toList();
-                    BlockPos pos = positions.get(new Random(Mth.getSeed(this.worldPosition) + 42).nextInt(positions.size()));
+                    BlockPos pos = positions.get(random.nextInt(positions.size()));
                     if (this.level.setBlock(pos, possiblePositions.get(pos), 3)) {
                         if (this.level.getBlockEntity(pos) instanceof Garland garland) {
                             generated = true;
@@ -121,6 +149,7 @@ public class Garland extends BlockEntityBase {
                 }
             }
             this.generating = false;
+            this.maxDownGenerating = 2;
             this.setChanged();
             if (generated) {
                 this.setDispatchable();
@@ -136,6 +165,7 @@ public class Garland extends BlockEntityBase {
         this.primary = nbt.getBoolean("Primary");
         this.otherPos = NbtUtils.readBlockPos(nbt.getCompound("OtherPos")).immutable();
         this.generating = nbt.getBoolean("GenerateOnLoad");
+        this.maxDownGenerating = nbt.getInt("GenerateOnLoadMaxDownBy");
         this.updateRenderAABB();
     }
 
@@ -145,6 +175,7 @@ public class Garland extends BlockEntityBase {
         nbt.putBoolean("Primary", this.primary);
         nbt.put("OtherPos", NbtUtils.writeBlockPos(this.otherPos));
         nbt.putBoolean("GenerateOnLoad", this.generating);
+        nbt.putInt("GenerateOnLoadMaxDownBy", this.maxDownGenerating);
     }
 
     @Nonnull
