@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -126,7 +127,7 @@ public class Garland extends BlockEntityBase {
                             level.setBlock(target.above(), Blocks.JACK_O_LANTERN.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.from2DDataValue(random.nextInt(4))), 3);
                         }
                         BlockPos.MutableBlockPos mt = target.mutable().move(0, -1, 0);
-                        while (level.isEmptyBlock(mt) || level.getBlockState(mt).getMaterial().isReplaceable()) {
+                        while (level.isEmptyBlock(mt) || level.getBlockState(mt).getMaterial().isReplaceable() || level.getBlockState(mt).is(BlockTags.CROPS)) {
                             if (!level.setBlock(mt, Blocks.OAK_FENCE.defaultBlockState(), 3)) break;
                             mt.move(0, -1, 0);
                         }
