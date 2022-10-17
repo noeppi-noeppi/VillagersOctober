@@ -92,7 +92,7 @@ public class GarlandBlock extends BlockBE<Garland> {
     @Override
     public void onRemove(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull BlockState newState, boolean isMoving) {
         if (!level.isClientSide && !state.is(newState.getBlock()) && level.getBlockEntity(pos) instanceof Garland garland) {
-            if (level.getBlockState(garland.otherPos()).getBlock() == this) {
+            if (!garland.generateOnLoad() && level.getBlockState(garland.otherPos()).getBlock() == this) {
                 // Don't drop, as this block will drop, so in total only one garland drops
                 level.destroyBlock(garland.otherPos(), false);
             }
