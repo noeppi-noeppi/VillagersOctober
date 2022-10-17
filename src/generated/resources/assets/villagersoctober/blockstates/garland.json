@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "villagersoctober:block/garland",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "villagersoctober:block/garland"
+    },
+    "facing=south": {
+      "model": "villagersoctober:block/garland",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "villagersoctober:block/garland",
+      "y": 270
+    }
+  }
+}

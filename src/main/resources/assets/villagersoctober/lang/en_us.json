@@ -13,6 +13,7 @@
   "block.villagersoctober.doorbell": "Doorbell",
   "block.villagersoctober.scarecrow": "Scarecrow",
   "block.villagersoctober.mystical_table": "Mystical Table",
+  "block.villagersoctober.garland": "Spooky Garland",
   
   "entity.villagersoctober.ghast_balloon": "Ghast Balloon",
   "entity.minecraft.villager.villagersoctober.madman": "Madman",
@@ -28,5 +29,10 @@
   
   "jei.villagersoctober.candy": "Put on a halloween costume and ring the bell at the villager's houses at night to get some candy.",
   "jei.villagersoctober.mystical_table": "Job-site block of the madman villager. Can hold up to 5 brewing-related items.",
-  "jei.villagersoctober.ghast_balloon": "A tiny floating ghast that can be attached to a fence. Can be found in villages or traded from a madman villager."
+  "jei.villagersoctober.ghast_balloon": "A tiny floating ghast that can be attached to a fence. Can be found in villages or traded from a madman villager.",
+  
+  "tooltip.villagersoctober.garland.connect": "Connecting to %s",
+  "tooltip.villagersoctober.garland.too_close": "Too close.",
+  "tooltip.villagersoctober.garland.too_far": "Too far away.",
+  "tooltip.villagersoctober.garland.origin_obstructed": "Origin position obstructed."
 }

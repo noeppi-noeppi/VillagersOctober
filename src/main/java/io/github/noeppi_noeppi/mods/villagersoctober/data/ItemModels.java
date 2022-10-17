@@ -2,6 +2,7 @@ package io.github.noeppi_noeppi.mods.villagersoctober.data;
 
 import io.github.noeppi_noeppi.mods.villagersoctober.content.CandyItem;
 import io.github.noeppi_noeppi.mods.villagersoctober.dress.DressItem;
+import io.github.noeppi_noeppi.mods.villagersoctober.garland.GarlandBlock;
 import io.github.noeppi_noeppi.mods.villagersoctober.scarecrow.ScarecrowBlock;
 import io.github.noeppi_noeppi.mods.villagersoctober.bell.DoorBellBlock;
 import net.minecraft.data.DataGenerator;
@@ -39,7 +40,7 @@ public class ItemModels extends ItemModelProviderBase {
 
     @Override
     protected void defaultBlock(ResourceLocation id, BlockItem item) {
-        if (item.getBlock() instanceof DoorBellBlock) {
+        if (item.getBlock() instanceof DoorBellBlock || item.getBlock() instanceof GarlandBlock) {
             this.withExistingParent(id.getPath(), GENERATED).texture("layer0", new ResourceLocation(id.getNamespace(), "item/" + id.getPath()));
         } else if (item.getBlock() instanceof ScarecrowBlock) {
             this.getBuilder(id.getPath()).parent(new ModelFile.UncheckedModelFile(new ResourceLocation(id.getNamespace(), "block/" + id.getPath() + "_0")));

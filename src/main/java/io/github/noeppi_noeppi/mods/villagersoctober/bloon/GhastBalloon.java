@@ -13,6 +13,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.phys.Vec3;
@@ -239,5 +240,11 @@ public class GhastBalloon extends Entity {
     @Override
     public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
+    }
+
+    @Nullable
+    @Override
+    public ItemStack getPickResult() {
+        return new ItemStack(ModItems.ghastBalloon);
     }
 }

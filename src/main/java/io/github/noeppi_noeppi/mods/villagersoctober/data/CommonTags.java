@@ -18,5 +18,6 @@ public class CommonTags extends CommonTagsProviderBase {
     @Override
     public void setup() {
         this.item(ModItemTags.MYSTICAL_TABLE_ITEMS).add(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION);
+        this.item(ModItemTags.GARLAND_ITEMS).add(Items.BONE, Items.APPLE, Items.OXEYE_DAISY, Items.LILY_OF_THE_VALLEY, Items.ROSE_BUSH, Items.EMERALD);
     }
 }
