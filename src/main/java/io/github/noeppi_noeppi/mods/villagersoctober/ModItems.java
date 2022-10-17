@@ -18,4 +18,5 @@ public class ModItems {
     public static final BatMask batMask = new BatMask(VillagersOctober.getInstance(), new Item.Properties().stacksTo(1));
     public static final BatWings batWings = new BatWings(VillagersOctober.getInstance(), new Item.Properties().stacksTo(1));
     public static final VampireCloak vampireCloak = new VampireCloak(VillagersOctober.getInstance(), new Item.Properties().stacksTo(1));
+    public static final VampireSuit vampireSuit = new VampireSuit(VillagersOctober.getInstance(), new Item.Properties().stacksTo(1));
 }

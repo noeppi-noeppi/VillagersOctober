@@ -71,7 +71,7 @@ public class DressLayer<M extends HumanoidModel<Player>> extends RenderLayer<Pla
     private void renderModel(PoseStack poseStack, MultiBufferSource buffer, ItemStack stack, BakedModel model, RenderType renderType, EquipmentSlot slot, int light, boolean left) {
         poseStack.pushPose();
         this.translateTo(poseStack, slot, left);
-        model.applyTransform(ItemTransforms.TransformType.HEAD, poseStack, left);
+        model.applyTransform(ItemTransforms.TransformType.HEAD, poseStack, slot != EquipmentSlot.FEET && slot != EquipmentSlot.LEGS && left);
         poseStack.translate(-0.5, -0.5, -0.5);
         VertexConsumer vertex = buffer.getBuffer(renderType);
         Minecraft.getInstance().getItemRenderer().renderModelLists(model, stack, light, OverlayTexture.NO_OVERLAY, poseStack, vertex);
@@ -84,6 +84,7 @@ public class DressLayer<M extends HumanoidModel<Player>> extends RenderLayer<Pla
             case CHEST -> this.getParentModel().body.translateAndRotate(poseStack);
             case LEGS, FEET -> {
                 if (left) {
+                    poseStack.scale(-1, 1, 1);
                     this.getParentModel().leftLeg.translateAndRotate(poseStack);
                     poseStack.translate(-1.9/16d, -12/16d, 0);
                 } else {

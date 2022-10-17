@@ -71,6 +71,7 @@ public final class VillagersOctober extends ModXRegistration {
             
             DressHelper.addDress(ModItems.witchHat, ModItems.witchRobe);
             DressHelper.addDress(ModItems.batMask, ModItems.batWings);
+            DressHelper.addDress(null, ModItems.vampireCloak, ModItems.vampireSuit, null);
 
             VillagerTrades.TRADES.put(ModProfessions.madman, MadManTrades.makeTrades());
         });
