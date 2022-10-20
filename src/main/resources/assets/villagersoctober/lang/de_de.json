@@ -1,0 +1,40 @@
+{
+  "itemGroup.villagersoctober": "Villager's October",
+  
+  "item.villagersoctober.candy": "Bonbon",
+  "item.villagersoctober.ghast_balloon": "Ghast-Ballon",
+  "item.villagersoctober.witch_hat": "Hexenhut",
+  "item.villagersoctober.witch_robe": "Mexenmantel",
+  "item.villagersoctober.bat_mask": "Fledermausmaske",
+  "item.villagersoctober.bat_wings": "Fledermausflügel",
+  "item.villagersoctober.vampire_cloak": "Vampirumhang",
+  "item.villagersoctober.vampire_suit": "Vampiranzug",
+  
+  "block.villagersoctober.doorbell": "Türklingel",
+  "block.villagersoctober.scarecrow": "Vogelscheuche",
+  "block.villagersoctober.mystical_table": "Mystischer Tisch",
+  "block.villagersoctober.garland": "Unheimliche Girlande",
+  
+  "entity.villagersoctober.ghast_balloon": "Ghast-Ballon",
+  "entity.minecraft.villager.villagersoctober.madman": "Verrückter",
+  
+  "advancements.villagersoctober.villagersoctober.root.title":  "Villager's October",
+  "advancements.villagersoctober.villagersoctober.root.description":  "Finde ein dekoriertes Dorf!",
+  "advancements.villagersoctober.villagersoctober.ghast.title":  "Plastik-Ghast",
+  "advancements.villagersoctober.villagersoctober.ghast.description":  "Schieße einen Ghast-Ballon ab.",
+  "advancements.villagersoctober.villagersoctober.halloween.title":  "Süßes oder Saures!",
+  "advancements.villagersoctober.villagersoctober.halloween.description":  "Verkleide dich und bekomme Süßigkeiten von einem Dorfbewohner.",
+  "advancements.villagersoctober.villagersoctober.candy_collector.title":  "Süßigkeitensammler",
+  "advancements.villagersoctober.villagersoctober.candy_collector.description":  "Erhalte alle 16 Süßigkeiten von Dorfbewohnern.",
+  
+  "subtitle.villagersoctober.doorbell": "Klingel",
+  
+  "jei.villagersoctober.candy": "Zieh dir ein Kostüm an und klingel nachts an den Häusern der Dorfbewohner, um Süßigkeiten zu erhalten.",
+  "jei.villagersoctober.mystical_table": "Arbeitsblock des verrückten Villagers. Kann bis zu 5 Brau-Zutaten lagern.",
+  "jei.villagersoctober.ghast_balloon": "Ein kleiner, schwebender Ghast, der an einen Zaun gebunden werden kann. Kann in Dörfern gefunden werden oder von einem Verrückten durch Handel erworben werden.",
+  
+  "tooltip.villagersoctober.garland.connect": "Verbinde mit %s",
+  "tooltip.villagersoctober.garland.too_close": "Zu nah.",
+  "tooltip.villagersoctober.garland.too_far": "Zu weit weg.",
+  "tooltip.villagersoctober.garland.origin_obstructed": "Ursprungsposition blockiert."
+}
