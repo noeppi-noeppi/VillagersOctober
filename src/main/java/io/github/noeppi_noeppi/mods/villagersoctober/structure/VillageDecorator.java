@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
@@ -59,7 +60,12 @@ public class VillageDecorator {
             
             if (block.state.is(BlockTags.DOORS) && block.state.getBlock() instanceof DoorBlock && block.state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER) {
                 if (level.getBlockState(block.pos).is(BlockTags.DOORS)) {
+                    boolean inverseDoor = false;
+                    //noinspection RedundantIfStatement
+                    if (BuiltinStructures.VILLAGE_DESERT.equals(structure) && block.state.getBlock() == Blocks.JUNGLE_DOOR) inverseDoor = true;
+                    if (BuiltinStructures.VILLAGE_SAVANNA.equals(structure) && block.state.getBlock() == Blocks.ACACIA_DOOR) inverseDoor = true;
                     Direction facing = block.state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+                    if (inverseDoor) facing = facing.getOpposite();
                     BlockPos frontPos = block.pos.relative(facing.getOpposite());
                     Direction firstLook = block.state.getValue(BlockStateProperties.DOOR_HINGE) == DoorHingeSide.LEFT ? facing.getClockWise() : facing.getCounterClockWise();
                     if (!tryPlaceBell(level, frontPos.relative(firstLook), facing)) {

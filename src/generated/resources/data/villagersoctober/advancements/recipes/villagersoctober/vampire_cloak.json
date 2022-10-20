@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:purple_wool"
+              "minecraft:red_wool"
             ]
           }
         ]
@@ -18,7 +18,19 @@
         "items": [
           {
             "items": [
-              "minecraft:green_wool"
+              "minecraft:gray_wool"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "criterion2": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:redstone_torch"
             ]
           }
         ]
@@ -27,7 +39,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "villagersoctober:witch_robe"
+        "recipe": "villagersoctober:vampire_cloak"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -36,12 +48,13 @@
     [
       "criterion0",
       "criterion1",
+      "criterion2",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "villagersoctober:witch_robe"
+      "villagersoctober:vampire_cloak"
     ]
   }
 }

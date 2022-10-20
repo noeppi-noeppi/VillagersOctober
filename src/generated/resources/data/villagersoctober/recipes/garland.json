@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "tag": "villagersoctober:candy"
+    },
+    "i": {
+      "tag": "villagersoctober:garland_items"
+    },
+    "s": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "sss",
+    "cic"
+  ],
+  "result": {
+    "item": "villagersoctober:garland"
+  }
+}

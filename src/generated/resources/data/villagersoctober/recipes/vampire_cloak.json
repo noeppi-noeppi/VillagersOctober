@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "g": {
+      "item": "minecraft:gray_wool"
+    },
+    "r": {
+      "item": "minecraft:red_wool"
+    },
+    "t": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "pattern": [
+    "rtr",
+    "ggg",
+    "g g"
+  ],
+  "result": {
+    "item": "villagersoctober:vampire_cloak"
+  }
+}

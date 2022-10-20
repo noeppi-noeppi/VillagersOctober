@@ -46,6 +46,7 @@ public class GhastBalloon extends Entity {
         return tiePos;
     }
 
+    @Nullable
     public Vec3 getTieVec() {
         return tieVec;
     }
@@ -206,9 +207,9 @@ public class GhastBalloon extends Entity {
     @Override
     public void onSyncedDataUpdated(@Nonnull EntityDataAccessor<?> key) {
         super.onSyncedDataUpdated(key);
-        if (key == TIE_POS && this.level.isClientSide) {
+        if (TIE_POS.equals(key) && this.level.isClientSide) {
             this.setTiePos(this.entityData.get(TIE_POS));
-        } else if (key == LOOK_ANGLE && this.level.isClientSide) {
+        } else if (LOOK_ANGLE.equals(key) && this.level.isClientSide) {
             this.setLookAngleDeg(this.entityData.get(LOOK_ANGLE));
         }
     }

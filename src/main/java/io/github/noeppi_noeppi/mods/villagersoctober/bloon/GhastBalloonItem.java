@@ -25,7 +25,9 @@ public class GhastBalloonItem extends ItemBase implements Registerable {
         super(mod, properties);
         
         this.entityType = EntityType.Builder.of(GhastBalloon::new, MobCategory.MISC)
-                .sized(1.4f, 1.4f).build(mod.resource("ghast_balloon").toString());
+                .sized(1.4f, 1.4f)
+                .clientTrackingRange(10)
+                .build(mod.resource("ghast_balloon").toString());
     }
     
     @Override

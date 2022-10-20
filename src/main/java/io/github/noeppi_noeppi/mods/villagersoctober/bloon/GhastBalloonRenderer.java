@@ -79,9 +79,11 @@ public class GhastBalloonRenderer extends EntityRenderer<GhastBalloon> {
     }
 
     private void renderLeash(GhastBalloon balloon, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int light) {
+        Vec3 leashTieVec = balloon.getTieVec();
+        if (leashTieVec == null) return;
+
         poseStack.pushPose();
         
-        Vec3 leashTieVec = balloon.getTieVec();
         double balloonRot = Mth.lerp(partialTicks, balloon.yRotO, balloon.getYRot()) * (Math.PI / 180) + (Math.PI / 2);
         Vec3 leashOffset = this.ghast.getLeashOffset().multiply(GHAST_SCALE, GHAST_SCALE, GHAST_SCALE);
         

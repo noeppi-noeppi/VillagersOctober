@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "f": {
+      "item": "minecraft:rabbit_hide"
+    },
+    "w": {
+      "item": "minecraft:brown_wool"
+    }
+  },
+  "pattern": [
+    "w w",
+    "www",
+    "f f"
+  ],
+  "result": {
+    "item": "villagersoctober:bat_mask"
+  }
+}

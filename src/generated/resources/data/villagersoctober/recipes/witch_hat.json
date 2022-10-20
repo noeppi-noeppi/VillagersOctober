@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "item": "minecraft:black_wool"
+    },
+    "g": {
+      "item": "minecraft:lime_wool"
+    },
+    "s": {
+      "item": "minecraft:spider_eye"
+    }
+  },
+  "pattern": [
+    " b ",
+    "bsb",
+    "bgb"
+  ],
+  "result": {
+    "item": "villagersoctober:witch_hat"
+  }
+}

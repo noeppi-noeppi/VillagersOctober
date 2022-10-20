@@ -15,6 +15,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -44,10 +45,9 @@ public final class VillagersOctober extends ModXRegistration {
         });
         
         instance = this;
-
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::initColors);
-
+        
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(this::initColors);
             FMLJavaModLoadingContext.get().getModEventBus().addListener(this::reloadClientResources);
         });
 
@@ -82,12 +82,14 @@ public final class VillagersOctober extends ModXRegistration {
 
     }
 
+    @OnlyIn(Dist.CLIENT)
     private void initColors(RegisterColorHandlersEvent.Item event) {
         for (DyeColor color : DyeColor.values()) {
             event.register((stack, tintIndex) -> color.getFireworkColor() & 0xFFFFFF, ModItems.candy.get(color));
         }
     }
     
+    @OnlyIn(Dist.CLIENT)
     private void reloadClientResources(RegisterClientReloadListenersEvent event) {
         event.registerReloadListener(new SimplePreparableReloadListener<Void>() {
 

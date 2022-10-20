@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:purple_wool"
+              "minecraft:leather"
             ]
           }
         ]
@@ -18,7 +18,7 @@
         "items": [
           {
             "items": [
-              "minecraft:green_wool"
+              "minecraft:string"
             ]
           }
         ]
@@ -27,7 +27,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "villagersoctober:witch_robe"
+        "recipe": "villagersoctober:bat_wings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,7 +41,7 @@
   ],
   "rewards": {
     "recipes": [
-      "villagersoctober:witch_robe"
+      "villagersoctober:bat_wings"
     ]
   }
 }

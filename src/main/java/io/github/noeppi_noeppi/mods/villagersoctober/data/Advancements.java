@@ -3,6 +3,7 @@ package io.github.noeppi_noeppi.mods.villagersoctober.data;
 import io.github.noeppi_noeppi.mods.villagersoctober.ModBlocks;
 import io.github.noeppi_noeppi.mods.villagersoctober.ModItems;
 import io.github.noeppi_noeppi.mods.villagersoctober.advancement.HalloweenTrigger;
+import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.data.DataGenerator;
@@ -12,6 +13,8 @@ import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import org.moddingx.libx.annotation.data.Datagen;
 import org.moddingx.libx.datagen.provider.AdvancementProviderBase;
 import org.moddingx.libx.mod.ModX;
+
+import java.util.Arrays;
 
 @Datagen
 public class Advancements extends AdvancementProviderBase {
@@ -42,6 +45,16 @@ public class Advancements extends AdvancementProviderBase {
         
         this.advancement("halloween")
                 .display(ModItems.candy.get(DyeColor.RED))
-                .task(new HalloweenTrigger.Instance(EntityPredicate.Composite.ANY));
+                .task(new HalloweenTrigger.Instance(EntityPredicate.Composite.ANY, ItemPredicate.ANY));
+        
+        this.advancement("candy_collector")
+                .parent("halloween")
+                .display(ModItems.candy.get(DyeColor.YELLOW))
+                .tasks(() -> Arrays.stream(DyeColor.values())
+                        .map(ModItems.candy::get)
+                        .map(i -> ItemPredicate.Builder.item().of(i).build())
+                        .map(i -> new HalloweenTrigger.Instance(EntityPredicate.Composite.ANY, i))
+                        .map(t -> new CriterionTriggerInstance[]{t})
+                        .toArray(CriterionTriggerInstance[][]::new));
     }
 }

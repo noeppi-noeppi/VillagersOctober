@@ -6,6 +6,7 @@ import net.minecraft.world.item.Item;
 
 public class ModItemTags {
 
+    public static final TagKey<Item> CANDY = ItemTags.create(VillagersOctober.getInstance().resource("candy"));
     public static final TagKey<Item> MYSTICAL_TABLE_ITEMS = ItemTags.create(VillagersOctober.getInstance().resource("mythical_table_items"));
     public static final TagKey<Item> GARLAND_ITEMS = ItemTags.create(VillagersOctober.getInstance().resource("garland_items"));
 }

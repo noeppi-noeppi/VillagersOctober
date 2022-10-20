@@ -1,0 +1,230 @@
+{
+  "parent": "villagersoctober:villagersoctober/halloween",
+  "criteria": {
+    "halloween": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_white"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween10": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_cyan"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween11": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_purple"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween12": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_blue"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween13": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_brown"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween14": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_green"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween15": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_red"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween16": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_black"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween2": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_orange"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween3": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_magenta"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween4": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_light_blue"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween5": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_yellow"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween6": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_lime"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween7": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_pink"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween8": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_gray"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    },
+    "halloween9": {
+      "conditions": {
+        "item": {
+          "items": [
+            "villagersoctober:candy_light_gray"
+          ]
+        }
+      },
+      "trigger": "villagersoctober:halloween"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.villagersoctober.villagersoctober.candy_collector.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "villagersoctober:candy_yellow"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.villagersoctober.villagersoctober.candy_collector.title"
+    }
+  },
+  "requirements": [
+    [
+      "halloween"
+    ],
+    [
+      "halloween2"
+    ],
+    [
+      "halloween3"
+    ],
+    [
+      "halloween4"
+    ],
+    [
+      "halloween5"
+    ],
+    [
+      "halloween6"
+    ],
+    [
+      "halloween7"
+    ],
+    [
+      "halloween8"
+    ],
+    [
+      "halloween9"
+    ],
+    [
+      "halloween10"
+    ],
+    [
+      "halloween11"
+    ],
+    [
+      "halloween12"
+    ],
+    [
+      "halloween13"
+    ],
+    [
+      "halloween14"
+    ],
+    [
+      "halloween15"
+    ],
+    [
+      "halloween16"
+    ]
+  ]
+}

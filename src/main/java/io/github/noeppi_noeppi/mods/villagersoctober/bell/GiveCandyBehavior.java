@@ -86,7 +86,7 @@ public class GiveCandyBehavior extends Behavior<Villager> {
                 BehaviorUtils.throwItem(owner, this.candyStack.copy(), this.player.position());
                 BellHelper.setCandyTimer(owner);
                 if (this.player instanceof ServerPlayer serverPlayer) {
-                    ModTriggers.HALLOWEEN.trigger(serverPlayer, owner);
+                    ModTriggers.HALLOWEEN.trigger(serverPlayer, owner, this.candyStack.copy());
                 }
                 owner.getBrain().eraseMemory(ModMemories.candyTarget);
                 owner.getBrain().setActiveActivityIfPossible(Activity.REST);

@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:purple_wool"
+              "minecraft:black_wool"
             ]
           }
         ]
@@ -18,7 +18,19 @@
         "items": [
           {
             "items": [
-              "minecraft:green_wool"
+              "minecraft:spider_eye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "criterion2": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:lime_wool"
             ]
           }
         ]
@@ -27,7 +39,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "villagersoctober:witch_robe"
+        "recipe": "villagersoctober:witch_hat"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -36,12 +48,13 @@
     [
       "criterion0",
       "criterion1",
+      "criterion2",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "villagersoctober:witch_robe"
+      "villagersoctober:witch_hat"
     ]
   }
 }
