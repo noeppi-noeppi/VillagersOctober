@@ -77,7 +77,6 @@ public class DoorBellBlock extends BlockBase {
         Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
         return canSupportCenter(level, pos.relative(dir), dir.getOpposite());
     }
-
     
     @Nonnull
     @Override

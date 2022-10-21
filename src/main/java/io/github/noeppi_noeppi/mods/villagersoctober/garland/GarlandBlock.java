@@ -9,8 +9,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -87,6 +89,14 @@ public class GarlandBlock extends BlockBE<Garland> {
     public boolean canSurvive(@Nonnull BlockState state, @Nonnull LevelReader level, @Nonnull BlockPos pos) {
         Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
         return canSupportCenter(level, pos.relative(dir), dir.getOpposite());
+    }
+
+    @Nonnull
+    @Override
+    @SuppressWarnings("deprecation")
+    public BlockState updateShape(@Nonnull BlockState state, @Nonnull Direction facing, @Nonnull BlockState facingState, @Nonnull LevelAccessor level, @Nonnull BlockPos currentPos, @Nonnull BlockPos facingPos) {
+        Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+        return facing == dir && !this.canSurvive(state, level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
     }
 
     @Override
