@@ -1,20 +1,20 @@
 {
   "values": [
-    "villagersoctober:candy_gray",
-    "villagersoctober:candy_lime",
-    "villagersoctober:candy_green",
-    "villagersoctober:candy_yellow",
-    "villagersoctober:candy_white",
-    "villagersoctober:candy_purple",
-    "villagersoctober:candy_cyan",
-    "villagersoctober:candy_light_blue",
-    "villagersoctober:candy_pink",
-    "villagersoctober:candy_red",
-    "villagersoctober:candy_magenta",
     "villagersoctober:candy_black",
-    "villagersoctober:candy_brown",
     "villagersoctober:candy_blue",
+    "villagersoctober:candy_brown",
+    "villagersoctober:candy_cyan",
+    "villagersoctober:candy_gray",
+    "villagersoctober:candy_green",
+    "villagersoctober:candy_light_blue",
     "villagersoctober:candy_light_gray",
-    "villagersoctober:candy_orange"
+    "villagersoctober:candy_lime",
+    "villagersoctober:candy_magenta",
+    "villagersoctober:candy_orange",
+    "villagersoctober:candy_pink",
+    "villagersoctober:candy_purple",
+    "villagersoctober:candy_red",
+    "villagersoctober:candy_white",
+    "villagersoctober:candy_yellow"
   ]
 }
