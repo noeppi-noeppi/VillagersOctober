@@ -39,8 +39,7 @@ function initializeCoreMod(): CoreMods {
                         lvtSettings = (insn as VarInsnNode).var
                     }
 
-                    if (insn.getOpcode() == Opcodes.IRETURN) {
-                        // Will find the last one
+                    if (insn.getOpcode() == Opcodes.IRETURN && insn.getPrevious()?.getOpcode() == Opcodes.ICONST_1) {
                         insertBefore = insn
                     }
                 }

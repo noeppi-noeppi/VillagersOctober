@@ -11,6 +11,7 @@ function initializeCoreMod() {
                 methodDesc: '(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;Z)Z'
             },
             transformer: function (method) {
+                var _a;
                 var lvtTemplate = -2;
                 var lvtSettings = -2;
                 var insertBefore = null;
@@ -36,8 +37,7 @@ function initializeCoreMod() {
                     if (lvtSettings == -1 && insn.getOpcode() == coremods_1.Opcodes.ASTORE) {
                         lvtSettings = insn.var;
                     }
-                    if (insn.getOpcode() == coremods_1.Opcodes.IRETURN) {
-                        // Will find the last one
+                    if (insn.getOpcode() == coremods_1.Opcodes.IRETURN && ((_a = insn.getPrevious()) === null || _a === void 0 ? void 0 : _a.getOpcode()) == coremods_1.Opcodes.ICONST_1) {
                         insertBefore = insn;
                     }
                 }
